@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,10 @@ import com.amzur.user_management.entities.UserEntity;
 import com.amzur.user_management.handlers.ResourceNotAvailable;
 import com.amzur.user_management.handlers.UserAlreadyExist;
 import com.amzur.user_management.repository.UserRepository;
+
+@Profile("us")
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceUS implements UserService{
 
 	
 	private UserRepository userRepository;
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService{
 	
 
      @Autowired                                                              
-	public UserServiceImpl(UserRepository userRepository, RestTemplate restTemplate) {
+	public UserServiceUS(UserRepository userRepository, RestTemplate restTemplate) {
 		super();
 		this.userRepository = userRepository;
 		this.restTemplate = restTemplate;
