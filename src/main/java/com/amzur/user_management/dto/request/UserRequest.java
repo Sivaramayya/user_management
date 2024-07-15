@@ -6,9 +6,7 @@ import lombok.Data;
 @Data
 
 public class UserRequest {
-	private Long userId;
-	 @NotNull(message = "Please provide name")
-	    @NotEmpty(message = "name should not be empty")
+	
 	private String name;
 	 @NotNull(message = "Please provide Phone Number")
 	    @NotEmpty(message = "Phone Number should not be empty")
@@ -22,12 +20,7 @@ public class UserRequest {
 	 @NotNull(message = "Please provide Address")
 	    @NotEmpty(message = "Address should not be empty")
 	private String address;
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+	
 	public String getName() {
 		return name;
 	}

@@ -113,6 +113,10 @@ public class UserServiceUS implements UserService{
 	
 	}
 	
+	public String getUserEmail(long userId) {
+		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
+		return userEntity.getEmail();
+	}
 	public List<OrderResponse> getUserOrders(String email, String password) {
         UserResponse userResponse = findByEmail(email, password);
         
@@ -136,6 +140,8 @@ public class UserServiceUS implements UserService{
 		BeanUtils.copyProperties(userEntity, userReponse);
 		return userReponse;
 	}
+
+	
 
 	
 

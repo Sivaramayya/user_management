@@ -5,6 +5,16 @@ import lombok.Data;
 @Data
 public class OrderResponse {
   
-    private Long orderId;   
+    private Long orderId;
+
+	public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}  
+    
+    
 }
 

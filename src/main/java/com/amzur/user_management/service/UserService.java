@@ -21,4 +21,6 @@ public interface UserService {
 
 	public List<OrderResponse> getUserOrders(String email, String password);
 
+	public String getUserEmail(long userId);
+
 }
