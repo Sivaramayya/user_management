@@ -15,7 +15,7 @@ public interface UserService {
 	 
 	public UserResponse findByEmail(String email,String password);
 
-	public void deleteById(long userId);
+	public void deleteById(Long userId);
 	
 	public UserResponse findById(Long id);
 

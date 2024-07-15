@@ -95,7 +95,7 @@ public class UserServiceUS implements UserService{
 	}
 
 	@Override
-	public void deleteById(long userId) {
+	public void deleteById(Long userId) {
 		  UserResponse userResponse=findById(userId);
 		
 		userRepository.deleteById(userResponse.getUserId());

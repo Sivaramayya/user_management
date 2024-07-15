@@ -95,7 +95,7 @@ public class UserServiceIN implements UserService{
 	}
 
 	@Override
-	public void deleteById(long userId) {
+	public void deleteById(Long userId) {
 		  UserResponse userResponse=findById(userId);
 		
 		userRepository.deleteById(userResponse.getUserId());
@@ -118,7 +118,7 @@ public class UserServiceIN implements UserService{
         UserResponse userResponse = findByEmail(email, password);
         
         	
-            String url = "http://localhost:8080/orders/userId/" + userResponse.getUserId();
+            String url = "http://localhost:9191/order-management/orders/userId/" + userResponse.getUserId();
             
             ResponseEntity<List<OrderResponse>> response = restTemplate.exchange(
                 url,

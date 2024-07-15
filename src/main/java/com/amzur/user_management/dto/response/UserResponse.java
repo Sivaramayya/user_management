@@ -13,7 +13,7 @@ public class UserResponse {
 	private String address;
 	
 	
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 	public void setUserId(Long userId) {
