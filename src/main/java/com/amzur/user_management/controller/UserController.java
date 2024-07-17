@@ -49,8 +49,12 @@ public class UserController {
 	public String updateUser(@RequestBody UserRequest userRequest) {
 		userService.save(userRequest);
 		return "Updated Successfully";
-	
 } 
+	@GetMapping("/{userId}")
+	public String getUserEmail(@PathVariable long userId) {
+	
+		return userService.getUserEmail(userId);
+	}
 	@DeleteMapping("/{userId}")
 	public String deleteUser(@PathVariable long userId) {
 	userService.deleteById(userId);

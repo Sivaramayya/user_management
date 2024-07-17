@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,9 @@ import com.amzur.user_management.entities.UserEntity;
 import com.amzur.user_management.handlers.ResourceNotAvailable;
 import com.amzur.user_management.handlers.UserAlreadyExist;
 import com.amzur.user_management.repository.UserRepository;
+@Profile("in")
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceIN implements UserService{
 
 	
 	private UserRepository userRepository;
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserService{
 	
 
      @Autowired                                                              
-	public UserServiceImpl(UserRepository userRepository, RestTemplate restTemplate) {
+	public UserServiceIN(UserRepository userRepository, RestTemplate restTemplate) {
 		super();
 		this.userRepository = userRepository;
 		this.restTemplate = restTemplate;
@@ -111,11 +113,15 @@ public class UserServiceImpl implements UserService{
 	
 	}
 	
+	public String getUserEmail(long userId) {
+		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
+		return userEntity.getEmail();
+	}
 	public List<OrderResponse> getUserOrders(String email, String password) {
         UserResponse userResponse = findByEmail(email, password);
         
         	
-            String url = "http://localhost:8080/orders/userId/" + userResponse.getUserId();
+            String url = "http://localhost:9191/order-management/orders/userId/" + userResponse.getUserId();
             
             ResponseEntity<List<OrderResponse>> response = restTemplate.exchange(
                 url,
@@ -134,6 +140,8 @@ public class UserServiceImpl implements UserService{
 		BeanUtils.copyProperties(userEntity, userReponse);
 		return userReponse;
 	}
+
+	
 
 	
 
