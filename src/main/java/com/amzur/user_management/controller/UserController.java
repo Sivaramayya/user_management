@@ -44,6 +44,11 @@ public class UserController {
 		return userService.getUserOrders(email,password);
 		
 	}
+	@GetMapping("/{userId}")
+	public String getEmail(@PathVariable Long userId)
+	{
+		return userService.getEmail(userId);
+	}
 	
 	@PutMapping
 	public String updateUser(@RequestBody UserRequest userRequest) {

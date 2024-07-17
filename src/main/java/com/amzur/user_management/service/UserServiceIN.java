@@ -138,6 +138,13 @@ public class UserServiceIN implements UserService{
 		return userReponse;
 	}
 
+	@Override
+	public String getEmail(Long userId) {
+		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()-> new ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
+		return userEntity.getEmail();
+	}
+
+	
 	
 
 	
