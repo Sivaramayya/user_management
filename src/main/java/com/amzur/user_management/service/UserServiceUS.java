@@ -112,7 +112,12 @@ public class UserServiceUS implements UserService{
 		return convertEntityToResponse(userEntity);
 	
 	}
-	
+	public void updateUser(UserRequest userRequest) {
+		UserEntity userEntity=userRepository.findById(userRequest.getUserId()).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
+		BeanUtils.copyProperties(userRequest, userEntity);
+		 userRepository.save(userEntity);
+		
+	}
 	public String getUserEmail(long userId) {
 		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
 		return userEntity.getEmail();

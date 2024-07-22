@@ -47,7 +47,7 @@ public class UserController {
 	
 	@PutMapping
 	public String updateUser(@RequestBody UserRequest userRequest) {
-		userService.save(userRequest);
+		userService.updateUser(userRequest);
 		return "Updated Successfully";
 } 
 	@GetMapping("/{userId}")
