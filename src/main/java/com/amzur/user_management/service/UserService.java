@@ -23,4 +23,6 @@ public interface UserService {
 
 	public String getUserEmail(long userId);
 
+	public void updateUser(UserRequest userRequest);
+
 }

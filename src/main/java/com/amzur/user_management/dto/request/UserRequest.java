@@ -1,12 +1,12 @@
 package com.amzur.user_management.dto.request;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
-@Data
+
 
 public class UserRequest {
 	
+	private Long userId;
 	private String name;
 	 @NotNull(message = "Please provide Phone Number")
 	    @NotEmpty(message = "Phone Number should not be empty")
@@ -20,7 +20,12 @@ public class UserRequest {
 	 @NotNull(message = "Please provide Address")
 	    @NotEmpty(message = "Address should not be empty")
 	private String address;
-	
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -51,6 +56,7 @@ public class UserRequest {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	
 	
 	
