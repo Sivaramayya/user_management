@@ -1,16 +1,25 @@
 package com.amzur.user_management.dto.response;
 
-import lombok.Data;
+import java.util.List;
 
-@Data
 public class UserResponse {
 	
 	private Long userId;
 	private String name;
 	private String phoneNumber;
 	private String email;
-	
 	private String address;
+	private List<OrderResponse> orderItems;
+
+	
+	
+	public List<OrderResponse> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderResponse> orderItems) {
+		this.orderItems = orderItems;
+	}
 
 	public Long getUserId() {
 		return userId;

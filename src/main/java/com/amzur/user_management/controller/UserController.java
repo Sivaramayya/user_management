@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amzur.user_management.dto.request.UserRequest;
-import com.amzur.user_management.dto.response.OrderResponse;
 import com.amzur.user_management.dto.response.UserResponse;
 import com.amzur.user_management.service.UserService;
 
@@ -41,7 +40,7 @@ public class UserController {
 		
 	}
 	@PostMapping("/login")
-	public List<OrderResponse> getUserDetails(@RequestBody UserRequest userRequest ) {
+	public UserResponse getUserDetails(@RequestBody UserRequest userRequest ) {
 		return userService.getUserOrders(userRequest.getEmail(),userRequest.getPassword());
 		
 	}

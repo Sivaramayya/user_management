@@ -122,7 +122,7 @@ public class UserServiceIN implements UserService{
 		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
 		return userEntity.getEmail();
 	}
-	public List<OrderResponse> getUserOrders(String email, String password) {
+	public UserResponse getUserOrders(String email, String password) {
         UserResponse userResponse = findByEmail(email, password);
         
         	
@@ -134,8 +134,8 @@ public class UserServiceIN implements UserService{
                 null,
                 new ParameterizedTypeReference<List<OrderResponse>>() {}
             );
-            
-            return response.getBody();
+            userResponse.setOrderItems(response.getBody()); ; 
+            return userResponse;
         
     }
 	
