@@ -122,11 +122,11 @@ public class UserServiceUS implements UserService{
 		UserEntity userEntity=userRepository.findById(userId).orElseThrow(()->new  ResourceNotAvailable(ApplicationConstants.RESOURCE_NOT_FOUND));
 		return userEntity.getEmail();
 	}
-	public List<OrderResponse> getUserOrders(String email, String password) {
+	public UserResponse getUserOrders(String email, String password) {
         UserResponse userResponse = findByEmail(email, password);
         
         	
-            String url = "http://localhost:8080/orders/userId/" + userResponse.getUserId();
+            String url = "http://localhost:9191/order-management/orders/userId/" + userResponse.getUserId();
             
             ResponseEntity<List<OrderResponse>> response = restTemplate.exchange(
                 url,
@@ -134,8 +134,8 @@ public class UserServiceUS implements UserService{
                 null,
                 new ParameterizedTypeReference<List<OrderResponse>>() {}
             );
-            
-            return response.getBody();
+            userResponse.setOrderItems(response.getBody()); ; 
+            return userResponse;
         
     }
 	
