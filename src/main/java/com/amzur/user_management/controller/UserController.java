@@ -29,9 +29,8 @@ public class UserController {
 	
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public String register( @Valid @RequestBody UserRequest userRequest) {
-		userService.save(userRequest);
-		return "Successfully Registered";
+	public UserResponse register( @Valid @RequestBody UserRequest userRequest) {
+		return userService.save(userRequest);
 	}
 	
 	@GetMapping
